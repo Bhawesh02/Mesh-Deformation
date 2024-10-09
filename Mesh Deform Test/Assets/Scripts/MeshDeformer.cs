@@ -20,7 +20,7 @@ public class MeshDeformer : MonoBehaviour
     public DeformType CurrentDeformType => m_deformType;
     public MeshDeformerData CurrentDeformData => m_currentDeformerData;
     
-    private void Awake()
+    private void Start()
     {
         GetCurrentDeformerData();
     }

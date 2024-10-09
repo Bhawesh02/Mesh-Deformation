@@ -5,14 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d60fabea-c82a-4148-9447-94f5a0539996" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Editor/MeshDeformHandlerEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Editor/MeshDeformReceiverEditor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Editor/MeshDeformHandlerEditor.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Editor/MeshDeformReceiverEditor.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Mesh Deform Test/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mesh Deform Test/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/Deform.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Deform.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Editor/MeshDeformerEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Editor/MeshDeformerEditor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MeshDeformHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MeshDeformReceiver.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MeshDeformHandler.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MeshDeformReceiver.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MeshDeformReceiver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MeshDeformReceiver.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/MeshDeformer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MeshDeformer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TypeOfDeform.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DeformType.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TypeOfDeform.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DeformType.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MeshGeneration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MeshGeneration.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +108,7 @@
       <workItem from="1727242702381" duration="5523000" />
       <workItem from="1727252372023" duration="8357000" />
       <workItem from="1727320327772" duration="7854000" />
-      <workItem from="1728460530168" duration="6755000" />
+      <workItem from="1728460530168" duration="7618000" />
     </task>
     <servers />
   </component>

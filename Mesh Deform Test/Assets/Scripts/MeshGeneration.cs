@@ -13,7 +13,7 @@ public class MeshGeneration : MonoBehaviour
     private List<Vector2> m_uvList = new ();
 
     
-    private void Awake()
+    private void Start()
     {
        GenerateMesh();
     }

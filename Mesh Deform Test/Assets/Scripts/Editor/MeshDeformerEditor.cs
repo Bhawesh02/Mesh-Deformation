@@ -16,7 +16,7 @@ public class MeshDeformerEditor : Editor
         EditorGUILayout.Space();
         EditorGUILayout.LabelField("Deform Data", EditorStyles.boldLabel);
         EditorGUILayout.Space(2f);
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("m_typeOfDeform"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("m_deformType"));
         
         if (!meshDeformer.CurrentDeformData)
         {
