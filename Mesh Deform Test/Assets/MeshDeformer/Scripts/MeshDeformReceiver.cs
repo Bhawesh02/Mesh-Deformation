@@ -6,6 +6,7 @@ using UnityEngine;
 public class MeshDeformReceiver : MonoBehaviour
 {
     [SerializeField] private MeshFilter m_meshFilter;
+    [SerializeField] private Mesh m_originalMesh;
     
     private Mesh m_mesh;
     private Vector3[] m_originalVertices;
@@ -65,6 +66,7 @@ public class MeshDeformReceiver : MonoBehaviour
 
     public void ResetMesh()
     {
+        m_originalVertices = m_originalMesh.vertices;
         m_mesh.SetVertices(m_originalVertices);
         Array.Copy(m_originalVertices, m_modifiedVertices, m_originalVertices.Length);
         m_mesh.RecalculateNormals();
