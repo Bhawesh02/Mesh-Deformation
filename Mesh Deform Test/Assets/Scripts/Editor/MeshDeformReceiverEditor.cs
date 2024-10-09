@@ -1,17 +1,17 @@
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(MeshDeformHandler))]
-public class MeshDeformHandlerEditor : Editor
+[CustomEditor(typeof(MeshDeformReceiver))]
+public class MeshDeformReceiverEditor : Editor
 {
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();
-        MeshDeformHandler meshDeformHandler = (MeshDeformHandler)target;
+        MeshDeformReceiver meshDeformReceiver = (MeshDeformReceiver)target;
         EditorGUILayout.Space();
         if (GUILayout.Button("Reset Mesh"))
         {
-            meshDeformHandler.ResetMesh();
+            meshDeformReceiver.ResetMesh();
         }
     }
 }

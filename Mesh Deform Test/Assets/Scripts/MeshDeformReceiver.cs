@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 
 [ExecuteAlways]
-public class MeshDeformHandler : MonoBehaviour
+public class MeshDeformReceiver : MonoBehaviour
 {
     [SerializeField] private MeshFilter m_meshFilter;
     
@@ -21,20 +21,20 @@ public class MeshDeformHandler : MonoBehaviour
     }
     
     
-    public void DeformMesh(Vector2 hitUV, TypeOfDeform typeOfDeform, MeshDeformerData cureentDeformerDatarmData)
+    public void DeformMesh(Vector2 hitUV, DeformType deformType, MeshDeformerData currentDeformerDatarmData)
     {
         Vector2[] uvCoords = m_mesh.uv;
         for (int uvIndex = 0; uvIndex < uvCoords.Length; uvIndex++)
         {
             float distance = Vector2.Distance(hitUV, uvCoords[uvIndex]);
-            if (distance >= cureentDeformerDatarmData.Radius || IsVertexMaxDeformed(uvIndex, cureentDeformerDatarmData.DeformHeight))
+            if (distance >= currentDeformerDatarmData.Radius || IsVertexMaxDeformed(uvIndex, currentDeformerDatarmData.DeformHeight))
             {
                 continue;
             }
 
-            if (typeOfDeform == TypeOfDeform.DEFORM)
+            if (deformType == DeformType.DEFORM)
             {
-                IncreaseVertexHeight(uvIndex, distance, cureentDeformerDatarmData);
+                IncreaseVertexHeight(uvIndex, distance, currentDeformerDatarmData);
             }
             else
             {
@@ -50,11 +50,11 @@ public class MeshDeformHandler : MonoBehaviour
         m_modifiedVertices[vertexIndex].y = m_originalVertices[vertexIndex].y;
     }
 
-    private void IncreaseVertexHeight(int vertexIndex, float distance, MeshDeformerData cureentDeformerDatarmData)
+    private void IncreaseVertexHeight(int vertexIndex, float distance, MeshDeformerData currentDeformerDatarmData)
     {
-        float distanceRadiusRatio = Mathf.Clamp01(distance / cureentDeformerDatarmData.Radius);
+        float distanceRadiusRatio = Mathf.Clamp01(distance / currentDeformerDatarmData.Radius);
         float newHeight = m_originalVertices[vertexIndex].y +
-                          (cureentDeformerDatarmData.DeformHeight * cureentDeformerDatarmData.DeformSmoothCurve.Evaluate(distanceRadiusRatio));
+                          (currentDeformerDatarmData.DeformHeight * currentDeformerDatarmData.DeformSmoothCurve.Evaluate(distanceRadiusRatio));
         m_modifiedVertices[vertexIndex].y = Mathf.Max(m_modifiedVertices[vertexIndex].y, newHeight);
     }
 

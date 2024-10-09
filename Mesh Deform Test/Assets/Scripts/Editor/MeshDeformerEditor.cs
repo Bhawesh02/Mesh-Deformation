@@ -30,10 +30,10 @@ public class MeshDeformerEditor : Editor
         }
         switch (meshDeformer.CurrentDeformType)
         {
-            case TypeOfDeform.DEFORM:
+            case DeformType.DEFORM:
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("m_deformMeshData"));
                 break;
-            case TypeOfDeform.FIX:
+            case DeformType.UNIFORM:
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("m_fixMeshData"));
                 break;
         }

@@ -8,16 +8,16 @@ public class MeshDeformer : MonoBehaviour
 #endif
     
     [SerializeField] private bool m_canDeformMesh;
-    [SerializeField] private TypeOfDeform m_typeOfDeform;
+    [SerializeField] private DeformType m_deformType;
 
     [SerializeField] private MeshDeformerData m_deformMeshData;
     [SerializeField] private MeshDeformerData m_fixMeshData;
     
     private RaycastHit m_raycastHit;
-    private MeshDeformHandler m_meshDeformHandler;
+    private MeshDeformReceiver m_meshDeformReceiver;
     private MeshDeformerData m_currentDeformerData;
 
-    public TypeOfDeform CurrentDeformType => m_typeOfDeform;
+    public DeformType CurrentDeformType => m_deformType;
     public MeshDeformerData CurrentDeformData => m_currentDeformerData;
     
     private void Awake()
@@ -32,10 +32,10 @@ public class MeshDeformer : MonoBehaviour
 
     private void GetCurrentDeformerData()
     {
-        m_currentDeformerData = m_typeOfDeform switch
+        m_currentDeformerData = m_deformType switch
         {
-            TypeOfDeform.FIX => m_fixMeshData,
-            TypeOfDeform.DEFORM => m_deformMeshData
+            DeformType.UNIFORM => m_fixMeshData,
+            DeformType.DEFORM => m_deformMeshData
         };
     }
 
@@ -49,7 +49,7 @@ public class MeshDeformer : MonoBehaviour
 #endif
         if (!m_currentDeformerData)
         {
-            Debug.LogError($"{m_typeOfDeform.ToString()} Data is null");
+            Debug.LogError($"{m_deformType.ToString()} Data is null");
             return;
         }
         if (!m_canDeformMesh)
@@ -58,10 +58,10 @@ public class MeshDeformer : MonoBehaviour
         }
         if (!Physics.Raycast(transform.position,Vector3.down, out m_raycastHit,Mathf.Infinity,m_currentDeformerData.DeformMeshLayer))
             return;
-        m_meshDeformHandler = m_raycastHit.transform.GetComponent<MeshDeformHandler>();
-        if (m_meshDeformHandler)
+        m_meshDeformReceiver = m_raycastHit.transform.GetComponent<MeshDeformReceiver>();
+        if (m_meshDeformReceiver)
         {
-            m_meshDeformHandler.DeformMesh(m_raycastHit.textureCoord, m_typeOfDeform, m_currentDeformerData);
+            m_meshDeformReceiver.DeformMesh(m_raycastHit.textureCoord, m_deformType, m_currentDeformerData);
         }
     }
 }
