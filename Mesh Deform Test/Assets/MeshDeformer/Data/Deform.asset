@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 740e6d75b3cf4b9e969d38ef3168dac7, type: 3}
   m_Name: Deform
   m_EditorClassIdentifier: 
-  DeformHeight: 2
-  Radius: 0.01
+  DeformHeight: 0.05
+  Radius: 0.56
   DeformSmoothCurve:
     serializedVersion: 2
     m_Curve:

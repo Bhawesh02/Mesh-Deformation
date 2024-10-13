@@ -15,9 +15,7 @@ public class MeshDeformReceiver : MonoBehaviour
     private void Start()
     {
         m_mesh = m_meshFilter.sharedMesh;
-        m_originalVertices = m_mesh.vertices;
         m_modifiedVertices = new Vector3[m_originalVertices.Length];
-        Array.Copy(m_originalVertices, m_modifiedVertices, m_originalVertices.Length);
         ResetMesh();
     }
     
@@ -67,8 +65,8 @@ public class MeshDeformReceiver : MonoBehaviour
     public void ResetMesh()
     {
         m_originalVertices = m_originalMesh.vertices;
-        m_mesh.SetVertices(m_originalVertices);
         Array.Copy(m_originalVertices, m_modifiedVertices, m_originalVertices.Length);
+        m_mesh.SetVertices(m_originalVertices);
         m_mesh.RecalculateNormals();
     }
 }

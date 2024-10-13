@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [ExecuteAlways]
@@ -35,7 +36,8 @@ public class MeshDeformer : MonoBehaviour
         m_currentDeformerData = m_deformType switch
         {
             DeformType.UNIFORM => m_fixMeshData,
-            DeformType.DEFORM => m_deformMeshData
+            DeformType.DEFORM => m_deformMeshData,
+            _ => throw new ArgumentOutOfRangeException()
         };
     }
 
