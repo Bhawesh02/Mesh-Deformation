@@ -15,6 +15,8 @@ public class MeshDeformReceiver : MonoBehaviour
     private void Start()
     {
         m_mesh = m_meshFilter.sharedMesh;
+        m_originalVertices = new Vector3[m_originalMesh.vertices.Length];
+        m_originalVertices = m_originalMesh.vertices;
         m_modifiedVertices = new Vector3[m_originalVertices.Length];
         ResetMesh();
     }

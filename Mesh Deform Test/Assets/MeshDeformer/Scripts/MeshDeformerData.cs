@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Deformer Data", menuName = "Mesh Deformer/ New Deformer Data")]

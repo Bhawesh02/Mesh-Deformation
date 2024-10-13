@@ -12,25 +12,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 740e6d75b3cf4b9e969d38ef3168dac7, type: 3}
   m_Name: Deform
   m_EditorClassIdentifier: 
-  DeformHeight: 0.05
-  Radius: 0.56
+  DeformHeight: 0.5
+  Radius: 0.02
   DeformSmoothCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 1
-      inSlope: -1
-      outSlope: -1
+      inSlope: -0.50046617
+      outSlope: -0.50046617
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
+      time: 0.695452
+      value: 0.6519498
+      inSlope: -1.3205894
+      outSlope: -1.3205894
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -1
-      outSlope: -1
+      inSlope: -2.1407127
+      outSlope: -2.1407127
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
