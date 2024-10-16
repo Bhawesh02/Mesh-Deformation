@@ -53,7 +53,7 @@ public class MeshDeformer : MonoBehaviour
     private void Update()
     {
 #if UNITY_EDITOR
-        if (!m_canRunInEditMode && Application.isEditor)
+        if (!Application.isPlaying && !m_canRunInEditMode)
         {
             return;
         }
