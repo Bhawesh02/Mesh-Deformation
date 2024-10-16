@@ -1,18 +1,29 @@
 using System;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
 [ExecuteAlways]
 public class MeshDeformReceiver : MonoBehaviour
 {
+    private enum DeformAxis
+    {
+        X_AXIS,
+        MINUS_X_AXIS,
+        Y_AXIS,
+        MINUS_Y_AXIS,
+        Z_AXIS,
+        MINUS_Z_AXIS
+    }
+    
     [SerializeField] private MeshFilter m_meshFilter;
     [SerializeField] private Mesh m_originalMesh;
+    [SerializeField] private DeformAxis m_deformAxis;
     
     private Mesh m_mesh;
     private Vector3[] m_originalVertices;
     private Vector3[] m_modifiedVertices;
-
-    
+    private Dictionary<DeformAxis, Vector3> m_deformAxisDatas;
     
     private void Start()
     {
@@ -26,6 +37,15 @@ public class MeshDeformReceiver : MonoBehaviour
 
     private void Init()
     {
+        m_deformAxisDatas = new()
+        {
+            { DeformAxis.X_AXIS , Vector3.right},
+            { DeformAxis.MINUS_X_AXIS , Vector3.left},
+            { DeformAxis.Y_AXIS , Vector3.up},
+            { DeformAxis.MINUS_Y_AXIS , Vector3.down},
+            { DeformAxis.Z_AXIS , Vector3.forward},
+            { DeformAxis.MINUS_Z_AXIS , Vector3.back}
+        };
         MakeDuplicateOfOriginalMesh();
         m_originalVertices = new Vector3[m_mesh.vertices.Length];
         m_modifiedVertices = new Vector3[m_originalVertices.Length];
@@ -60,14 +80,18 @@ public class MeshDeformReceiver : MonoBehaviour
         for (int uvIndex = 0; uvIndex < uvCoords.Length; uvIndex++)
         {
             float distance = Vector2.Distance(hitUV, uvCoords[uvIndex]);
-            if (distance >= currentDeformerDatarmData.Radius || IsVertexMaxDeformed(uvIndex, currentDeformerDatarmData.DeformHeight))
+            if (distance >= currentDeformerDatarmData.Radius)
             {
                 continue;
             }
-
             if (deformType == DeformType.DEFORM)
             {
-                IncreaseVertexHeight(uvIndex, distance, currentDeformerDatarmData);
+                m_deformAxisDatas.TryGetValue(m_deformAxis, out Vector3 deformVector);
+                if (IsVertexMaxDeformed(uvIndex, currentDeformerDatarmData.DeformHeight, deformVector))
+                {
+                    continue;
+                }
+                IncreaseVertexHeight(uvIndex, distance, currentDeformerDatarmData, deformVector);
             }
             else
             {
@@ -80,20 +104,27 @@ public class MeshDeformReceiver : MonoBehaviour
 
     private void FixVertexHeight(int vertexIndex)
     {
-        m_modifiedVertices[vertexIndex].y = m_originalVertices[vertexIndex].y;
+        m_modifiedVertices[vertexIndex] = m_originalVertices[vertexIndex];
     }
 
-    private void IncreaseVertexHeight(int vertexIndex, float distance, MeshDeformerData currentDeformerDatarmData)
+    private void IncreaseVertexHeight(int vertexIndex, float distance, MeshDeformerData currentDeformerDatarmData, Vector3 deformVector)
     {
         float distanceRadiusRatio = Mathf.Clamp01(distance / currentDeformerDatarmData.Radius);
-        float newHeight = m_originalVertices[vertexIndex].y +
-                          (currentDeformerDatarmData.DeformHeight * currentDeformerDatarmData.DeformSmoothCurve.Evaluate(distanceRadiusRatio));
-        m_modifiedVertices[vertexIndex].y = Mathf.Max(m_modifiedVertices[vertexIndex].y, newHeight);
+        Vector3 newVertexPosition = m_originalVertices[vertexIndex] +
+                          ((currentDeformerDatarmData.DeformHeight * currentDeformerDatarmData.DeformSmoothCurve.Evaluate(distanceRadiusRatio))* deformVector);
+        float newHeight = Vector3.Distance(m_originalVertices[vertexIndex], newVertexPosition);
+        float oldHeight = Vector3.Distance(m_originalVertices[vertexIndex], m_modifiedVertices[vertexIndex]);
+        if (newHeight > oldHeight)
+        {
+            m_modifiedVertices[vertexIndex] = newVertexPosition;
+        }
     }
 
-    private bool IsVertexMaxDeformed(int deformVertexIndex, float deformHeight)
+    private bool IsVertexMaxDeformed(int deformVertexIndex, float deformHeight, Vector3 deformVector)
     {
-        return m_modifiedVertices[deformVertexIndex].y >= m_originalVertices[deformVertexIndex].y + deformHeight;
+        Vector3 modifiedVertex = Vector3.Scale(m_modifiedVertices[deformVertexIndex], deformVector);
+        Vector3 originalVertex = Vector3.Scale(m_originalVertices[deformVertexIndex], deformVector);
+        return Vector3.Distance(modifiedVertex, originalVertex) >= deformHeight;
     }
 
     public void ResetMesh()
