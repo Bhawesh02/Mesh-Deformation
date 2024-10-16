@@ -1,5 +1,5 @@
 using System;
-
+using UnityEditor;
 using UnityEngine;
 
 [ExecuteAlways]
@@ -12,16 +12,48 @@ public class MeshDeformReceiver : MonoBehaviour
     private Vector3[] m_originalVertices;
     private Vector3[] m_modifiedVertices;
 
+    
+    
     private void Start()
     {
-        m_mesh = m_meshFilter.sharedMesh;
-        m_originalVertices = new Vector3[m_originalMesh.vertices.Length];
-        m_originalVertices = m_originalMesh.vertices;
+        Init();
+    }
+
+    private void OnValidate()
+    {
+        Init();
+    }
+
+    private void Init()
+    {
+        MakeDuplicateOfOriginalMesh();
+        m_originalVertices = new Vector3[m_mesh.vertices.Length];
         m_modifiedVertices = new Vector3[m_originalVertices.Length];
         ResetMesh();
     }
-    
-    
+
+    private void MakeDuplicateOfOriginalMesh()
+    {
+        m_mesh = new Mesh
+        {
+            vertices = (Vector3[])m_originalMesh.vertices.Clone(),
+            triangles = (int[])m_originalMesh.triangles.Clone(),
+            normals = (Vector3[])m_originalMesh.normals.Clone(),
+            uv = (Vector2[])m_originalMesh.uv.Clone()
+        };
+        if (m_originalMesh.tangents != null && m_originalMesh.tangents.Length > 0)
+        {
+            m_mesh.tangents = (Vector4[])m_originalMesh.tangents.Clone();
+        }
+        if (m_originalMesh.colors != null && m_originalMesh.colors.Length > 0)
+        {
+            m_mesh.colors = (Color[])m_originalMesh.colors.Clone();
+        }
+        m_mesh.RecalculateBounds();
+        m_meshFilter.sharedMesh = m_mesh;
+    }
+
+
     public void DeformMesh(Vector2 hitUV, DeformType deformType, MeshDeformerData currentDeformerDatarmData)
     {
         Vector2[] uvCoords = m_mesh.uv;

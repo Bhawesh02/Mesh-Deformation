@@ -77,6 +77,10 @@ public class MeshDeformer : MonoBehaviour
             m_meshDeformReceiverTransform = m_rayCastHit.transform;
             m_meshDeformReceiver = m_rayCastHit.transform.GetComponent<MeshDeformReceiver>();
         }
+        else if (!m_meshDeformReceiver)
+        {
+            m_meshDeformReceiver = m_rayCastHit.transform.GetComponent<MeshDeformReceiver>();
+        }
         if (m_meshDeformReceiver)
         {
             m_meshDeformReceiver.DeformMesh(m_rayCastHit.textureCoord, m_deformType, m_currentDeformerData);
