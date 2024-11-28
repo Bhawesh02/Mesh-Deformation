@@ -67,6 +67,7 @@ public class MeshDeformerEditor : Editor
         {
             return;
         }
+        EditorGUI.BeginChangeCheck();
         Vector3 newRayCastEndPosition = Handles.PositionHandle(currentPosition + meshDeformer.RayCastEndOffset, Quaternion.identity);
         newRayCastEndPosition -= currentPosition;
         if (EditorGUI.EndChangeCheck())

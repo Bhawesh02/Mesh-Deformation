@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 [ExecuteAlways]
@@ -111,7 +110,8 @@ public class MeshDeformReceiver : MonoBehaviour
     {
         float distanceRadiusRatio = Mathf.Clamp01(distance / currentDeformerDatarmData.Radius);
         Vector3 newVertexPosition = m_originalVertices[vertexIndex] +
-                          ((currentDeformerDatarmData.DeformHeight * currentDeformerDatarmData.DeformSmoothCurve.Evaluate(distanceRadiusRatio))* deformVector);
+                          ((currentDeformerDatarmData.DeformHeight * currentDeformerDatarmData.DeformSmoothCurve.Evaluate(distanceRadiusRatio))
+                            * deformVector);
         float newHeight = Vector3.Distance(m_originalVertices[vertexIndex], newVertexPosition);
         float oldHeight = Vector3.Distance(m_originalVertices[vertexIndex], m_modifiedVertices[vertexIndex]);
         if (newHeight > oldHeight)
