@@ -77,9 +77,7 @@ The Mesh Deformer Tool is a Unity-based tool designed to modify and manipulate m
 
 ## Working video
 
-![](https://github.com/Bhawesh02/Mesh-Deformation/blob/master/Mesh%20Deform%20Test/Assets/Extra/Mesh%20Deformer.gif)
-
-[video](https://youtu.be/mKKhAUzzRZM)
+[![](https://github.com/Bhawesh02/Mesh-Deformation/blob/master/Mesh%20Deform%20Test/Assets/Extra/Mesh%20Deformer.gif)](https://youtu.be/mKKhAUzzRZM)
 
 ## Contributions
 
