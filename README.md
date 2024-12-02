@@ -75,7 +75,7 @@ Generate and manipulate procedural meshes with specific patterns, making prototy
 
 ## Working video
 
-[Video](https://www.loom.com/share/70ae88a73d8b445e933a51e54ebbf9b3)
+![](https://github.com/Bhawesh02/Mesh-Deformation/blob/master/Mesh%20Deform%20Test/Assets/Extra/Mesh%20Deformer.gif)
 
 ### Screen Shots
 ![image](https://github.com/Bhawesh02/Slime-Slaughter-Wave-Wars/assets/93391124/d5f5631d-0ca7-4ad7-ace2-e2f238211a7a)
