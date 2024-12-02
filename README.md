@@ -4,52 +4,55 @@ The Mesh Deformer Tool is a Unity-based tool designed to modify and manipulate m
 
 ## Features
 
-- **Dynamic Mesh Deformation:** 
-  * Real-time mesh manipulation using **raycasting**.
-  * Multiple deformation modes:
-    * **Deform Mode:** Modify mesh surfaces interactively.
-    * **Uniform Mode:** Reset mesh to its original state effortlessly.
+- **Dynamic Mesh Deformation:**
 
-- **Customizable Deformation Settings** 
-  * Fine-tune **deformation height, radius, and smoothness** using **Animation Curves**.
-  * Adjustable deformation axis for precise control.
+  - Real-time mesh manipulation using **raycasting**.
+  - Multiple deformation modes:
+    - **Deform Mode:** Modify mesh surfaces interactively.
+    - **Uniform Mode:** Reset mesh to its original state effortlessly.
 
-- **Editor & Timeline Support** 
-  * **Edit Mode:** Apply deformations directly in the Unity Editor for static setups.
-  * **Timeline Integration:** Enable dynamic deformation animations within Unity's Timeline.'
+- **Customizable Deformation Settings**
 
-- **Custom Mesh Generation** 
-  * Dynamically create grid-based meshes with customizable dimensions and resolution for procedural effects or gameplay prototyping.
+  - Fine-tune **deformation height, radius, and smoothness** using **Animation Curves**.
+  - Adjustable deformation axis for precise control.
+
+- **Editor & Timeline Support**
+
+  - **Edit Mode:** Apply deformations directly in the Unity Editor for static setups.
+  - **Timeline Integration:** Enable dynamic deformation animations within Unity's Timeline.'
+
+- **Custom Mesh Generation**
+  - Dynamically create grid-based meshes with customizable dimensions and resolution for procedural effects or gameplay prototyping.
 
 ## Coding Architecture
 
-
 ### Core Components
 
-* ```MeshDeformReceiver```
-  * Handles deformation logic and applies transformations to mesh vertices.
-  * Supports deformation along multiple axes (e.g., X, Y, Z, and negative counterparts).
-* ```MeshDeformer```
-  * Implements raycasting logic to detect mesh objects and apply deformation.
-  * Includes states for deforming and resetting meshes.
-* ```MeshGeneration```
-  * Dynamically generates polygonal grid meshes based on dimensions and resolution set by the user.
+- `MeshDeformReceiver`
+  - Handles deformation logic and applies transformations to mesh vertices.
+  - Supports deformation along multiple axes (e.g., X, Y, Z, and negative counterparts).
+- `MeshDeformer`
+  - Implements raycasting logic to detect mesh objects and apply deformation.
+  - Includes states for deforming and resetting meshes.
+- `MeshGeneration`
+  - Dynamically generates polygonal grid meshes based on dimensions and resolution set by the user.
 
 ### Scriptable Object for Data Management
 
-* ```MeshDeformerData```
-  * Centralized storage for deformation parameters like height, radius, smoothness curves, and layer masks.
-  * Simplifies reuse and consistency across multiple mesh objects.
+- `MeshDeformerData`
+  - Centralized storage for deformation parameters like height, radius, smoothness curves, and layer masks.
+  - Simplifies reuse and consistency across multiple mesh objects.
 
-###  Custom Editors
+### Custom Editors
 
-* ```MeshDeformReceiverEditor```
-  * Adds an Editor button to reset the mesh directly within the Inspector.
-* ```MeshDeformerEditor```
-  * Provides intuitive scene view tools for configuring raycast endpoints and deformation parameters.
-  * Assigns deformation data efficiently in the Unity Inspector.
+- `MeshDeformReceiverEditor`
+  - Adds an Editor button to reset the mesh directly within the Inspector.
+- `MeshDeformerEditor`
+  - Provides intuitive scene view tools for configuring raycast endpoints and deformation parameters.
+  - Assigns deformation data efficiently in the Unity Inspector.
 
 ## How It Works
+
 <ol>
     <li>Attach the MeshDeformReceiver component to a mesh object.</li>
     <li>Add MeshDeformer to define raycasting and deformation parameters.</li>
@@ -61,21 +64,22 @@ The Mesh Deformer Tool is a Unity-based tool designed to modify and manipulate m
 
 ## Gameplay Use Cases
 
-* Terrain Modification:
-<br>
-  Create interactive terrains with dynamic features like footprints, craters, or custom paths.
+- Terrain Modification:
 
-* Interactive Objects:
-<br>
-Add realism by enabling objects to deform during gameplay, such as dented surfaces or reactive environments.
+  - Create interactive terrains with dynamic features like footprints, craters, or custom paths.
 
-* Procedural Effects:
-<br>
-Generate and manipulate procedural meshes with specific patterns, making prototyping faster and more versatile.
+- Interactive Objects:
+
+  - Add realism by enabling objects to deform during gameplay, such as dented surfaces or reactive environments.
+
+- Procedural Effects:
+  - Generate and manipulate procedural meshes with specific patterns, making prototyping faster and more versatile.
 
 ## Working video
 
 ![](https://github.com/Bhawesh02/Mesh-Deformation/blob/master/Mesh%20Deform%20Test/Assets/Extra/Mesh%20Deformer.gif)
+
+[video](https://youtu.be/mKKhAUzzRZM)
 
 ## Contributions
 
