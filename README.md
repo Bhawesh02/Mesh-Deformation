@@ -77,13 +77,6 @@ Generate and manipulate procedural meshes with specific patterns, making prototy
 
 ![](https://github.com/Bhawesh02/Mesh-Deformation/blob/master/Mesh%20Deform%20Test/Assets/Extra/Mesh%20Deformer.gif)
 
-### Screen Shots
-![image](https://github.com/Bhawesh02/Slime-Slaughter-Wave-Wars/assets/93391124/d5f5631d-0ca7-4ad7-ace2-e2f238211a7a)
-![image](https://github.com/Bhawesh02/Slime-Slaughter-Wave-Wars/assets/93391124/dce555b9-c215-4949-b11e-3efb8c5173dd)
-![image](https://github.com/Bhawesh02/Slime-Slaughter-Wave-Wars/assets/93391124/e50f993b-78ed-4a36-944e-6ff701307cc0)
-
-
-
 ## Contributions
 
 This tool represents my individual development efforts but thrives on community engagement. Feedback, suggestions, and collaborative contributions are highly encouraged. If you're passionate about mesh deformation techniques, Unity development workflows, or procedural generation, I’d love to connect!
